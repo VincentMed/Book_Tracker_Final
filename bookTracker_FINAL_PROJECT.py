@@ -15,8 +15,9 @@ class book(object):
         self.genre = "genre"
         self.sel = "selection"
         self.library = {}
-    
-    
+        self.action_dict_list = []
+        self.comedy_dict_list = []
+ 
     def getChoice(self):
         print("**************************************")
         print("Options")
@@ -48,13 +49,12 @@ class book(object):
             exit
     #Add book function   
     def add_book(self):
-        for i in range(1):
-            self.key = input("Enter Title of Book...\n")
-            self.author = input("Enter the name of Author...\n")
-            self.length = int(input("Enter number of pages...\n"))
-            self.genre = input("Which genre:\n'Action', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Thriller', 'Unknown'\n")
-            self.library[self.key] = {"Author": self.author, "Length": self.length, "Genre": self.genre }        
-            print(book.display(self))        
+        self.key = input("Enter Title of Book...\n")
+        self.author = input("Enter the name of Author...\n")
+        self.length = int(input("Enter number of pages...\n"))
+        self.genre = input("Which genre:\n'Action', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Thriller', 'Unknown'\n")
+        self.library[self.key] = {"Author": self.author, "Length": self.length, "Genre": self.genre }
+        print(book.display(self))            
         
         book.getChoice(self)
 
@@ -76,7 +76,6 @@ class book(object):
         print("Which book would you like to edit?\n")
         for key in self.library:
             print(key)
-            #TODO delete key, replace with new key and values
         self.remove = input()
         
         del self.library[self.remove]
@@ -93,14 +92,14 @@ class book(object):
             
         book.getChoice(self)
 
-    def genre_search(self):
+    #find keys with same genre
+    def genre_search(self):     
         print("Which genre would you like to search?\n")
-        self.target = input("'Action', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Thriller', 'Unknown'\n")
-        
-        pass  
-        
+        print("'Action', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Thriller', 'Unknown'\n")
+        self.selection = input("Type yor selection\n")
+        #TODO sort dictionary items by genre
+        book.getChoice(self)
 ###############################################################################
 
 book_obj = book()
 book_obj.getChoice()
-
